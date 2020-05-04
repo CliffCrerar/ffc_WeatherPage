@@ -7,41 +7,29 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
+    mode: 'development',
     entry: './src/index.js',
-    //devtool: 'inline-source-map',
     module: {
         rules: [
             { test: /\.css$/, use: ['style-loader', 'css-loader'] }, //css loader
             { test: /\.(png|svg|jpg|gif)$/, use: ['file-loader'] }, // filer loader
-            { test: /\.(woff|woff2|eot|ttf|otf)$/, use: ['file-loader'] }, //font loader
-            {
-                test: /\.scss$/,
-                use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "sass-loader" // compiles Sass to CSS
-                }]
-            },
-            {
-                test: /\.(html)$/,
-                use: {
-                    loader: 'html-loader',
-                    options: {
-                        attrs: [':data-src']
-                    }
-                }
-            },
-
+            { test: /\.(woff|woff2|eot|ttf|otf|html)$/, use: ['file-loader'] }, //font loader
+            // { test: /\.scss$/,use: [{loader: "style-loader" }]}, // creates style nodes from JS strings
+            // { loader: "css-loader" }, // translates CSS into CommonJS
+            // { loader: "sass-loader" } ,// compiles Sass to CSS
+            { test: /\.(html)$/, use: { loader: 'html-loader', options: { attrs: [':data-src'] } } },
         ]
+    },
+    devServer: {
+        contentBase: './dist'
     },
     plugins: [
         new ManifestPlugin(),
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
+            
             title: "FCC Weather",
-            favicon: './655415.png'
+            favicon: './favicon.png'
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',
@@ -55,5 +43,6 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
-    },
+        publicPath: '/',
+    }
 };
