@@ -19,7 +19,7 @@ import './wi/main.css';
 import './index.css';
 
 // HTML
-import pagebody from './html/body.html';
+
 
 // CUSTOM JS FUNCTIONS
 import getLink from './js/getApiLink';
@@ -36,7 +36,7 @@ import imageURLFog from './image/foghdwp.jpg';
 import imageURLCloudyDay from './image/wp.jpg';
 import imageURLCloudyNight from './image/nshrs.jpg';
 import dsImg from './image/dsimg.png';
-$('body').append(pagebody);
+
 
 $('#dsImg').attr('src', dsImg);
 $("#toggle").attr("display", 'none'); //disable toggle

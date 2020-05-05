@@ -4,9 +4,9 @@
   "description": "freeCodeCamp weather page reboot",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
-    "dev": "webpack --mode development",
-    "start": "webpack --watch --mode development"
+    "build": "node index --build",
+    "dev": "nodemon",
+    "start": "node server"
   },
   "author": "Cliff Crerar",
   "license": "MIT",
@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "font-awesome-sass-loader": "^2.0.1",

@@ -1,9 +1,23 @@
 //wGet darksky object and set weather variables
-module.exports = function(apiLink) {
 
+import pagebody from '../html/body.html';
+
+const 
+
+    div = document.createElement(div);
+    
+    div.innerHTML = pagebody;
+
+
+
+    document.body.appendChild(div)
+module.exports = function(apiLink) {
+console.log('run');
+// $.getJSON(apiLink, (res)=>console.log(res));
+    
     $.getJSON(apiLink, function(forecast) {
         localStorage.icon = forecast.currently.icon;
-        //console.log(forecast);
+        console.log(forecast);
 
         //Set all weather variables default values
         window.nowSum = forecast.currently.summary;
@@ -50,4 +64,5 @@ module.exports = function(apiLink) {
             });
 
     });
+    
 }
